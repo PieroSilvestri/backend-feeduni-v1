@@ -16,6 +16,7 @@ app.use(function(req, res, next){
 
 app.use(require('./controllers'));
 
-app.listen('1337', function(){
-	console.log('server is running')
+app.listen(process.env.port || process.env.PORT || 3979, function(){
+	console.log("Starting server");
+	console.log('%s listening to %s', app.name, app.url);
 });
