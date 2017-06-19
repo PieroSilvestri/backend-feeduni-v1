@@ -1,7 +1,9 @@
 var express = require('express'); 
 var app = express();
 var bodyParser = require('body-parser'); 
-var mysql = require('mysql') 
+var mysql = require('mysql');
+
+  
 
 app.use(bodyParser.json()); 
 
@@ -14,6 +16,6 @@ app.use(function(req, res, next){
 
 app.use(require('./controllers'));
 
-app.listen('3000', function(){
-	console.log('server is running on port 3000')
+app.listen('1337', function(){
+	console.log('server is running')
 });

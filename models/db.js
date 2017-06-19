@@ -8,10 +8,11 @@ var DB = function(){};
 
 DB.prototype.createPool = function(){
 	return mysql.createPool({
-			host     : 'localhost',
-			user     : 'root',
-			password : '',
-			connectionLimit : 100
+			host: 'prohosting3.netsons.net',
+			port: '3306',
+			user: 'mjhnxzbg_test',
+			password: '@Password1.',
+			database: 'mjhnxzbg_test1'
 		});
 }
 

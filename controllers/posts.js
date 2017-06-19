@@ -11,7 +11,7 @@ var connection = mysql.createPool({
 	database: 'mjhnxzbg_test1'
 });
 
-var tableName = 'mySampleTable';
+var tableName = 'posts';
 
 router.get('/', function(req, res){
 	connection.getConnection(function(error, tempCont){
