@@ -15,7 +15,7 @@ router.get('/', function(req, res){
 
 	connection.getConnection(function(error, tempCont){
 		if(!!error){
-			tempCont.release();
+			//tempCont.release();
 			console.log('Error');
 		}else{
 			console.log('Connected');
