@@ -16,8 +16,9 @@ var tableName = 'posts';
 router.get('/', function(req, res){
 	connection.getConnection(function(error, tempCont){
 		if(!!error){
-			tempCont.release();
+			//tempCont.release();
 			console.log('Error');
+			console.log(error);
 		}else{
 			console.log('Connected');
 			var query = "SELECT * FROM " + tableName;
@@ -77,6 +78,44 @@ router.get('/:userId', function(req, res){
 
 });
 
+router.post('/add', function(req, res){
+
+	if(!req.body.text || !req.body.tag_id){
+		return res.json({
+			message: 'Missing text or tag',
+			error: true
+		});
+	}
+
+	connection.getConnection(function(error, tempCont){
+		if(!!error){
+			//tempCont.release();
+			console.log('Error');
+		}else{
+			console.log('Connected');
+			tempCont.query("INSERT INTO " + tableName + " (TEXT, USER, TAG_ID) VALUES ('" 
+							+ req.body.text + "', '" + req.body.username + "', '" + req.body.tag_id + "');", 
+							function(error, rows, fields){
+								tempCont.release();
+								if(!!error){
+									console.log('Error in the query');
+								}else{
+									if(rows.length == 0){
+										return res.json({
+											message: "Annuncio non inserito",
+											error: true
+										})
+									}
+									res.status(200).json({
+										success: true,
+										body: rows
+										});
+								}
+			})
+		}
+	});
+
+});
 
 
 module.exports = router;

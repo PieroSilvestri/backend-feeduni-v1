@@ -16,7 +16,7 @@ app.use(function(req, res, next){
 
 app.use(require('./controllers'));
 
-app.listen(process.env.port || process.env.PORT || 3979, function(){
+app.listen(process.env.port || process.env.PORT || 5000, function(){
 	console.log("Starting server");
-	console.log('%s listening to %s', app.name, app.url);
+	console.log('%s listening to %s', app.name, app.port);
 });
