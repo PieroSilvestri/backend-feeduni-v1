@@ -93,8 +93,9 @@ router.post('/add', function(req, res){
 			console.log('Error');
 		}else{
 			console.log('Connected');
-			tempCont.query("INSERT INTO " + tableName + " (TEXT, USER, TAG_ID) VALUES ('" 
-							+ req.body.text + "', '" + req.body.username + "', '" + req.body.tag_id + "');", 
+			tempCont.query("INSERT INTO " + tableName + " (TEXT, USER, TAG_ID, IMAGE) VALUES ('" 
+							+ req.body.text + "', '" + req.body.username + "', '" 
+							+ req.body.tag_id + "', '" + req.body.image + "');", 
 							function(error, rows, fields){
 								tempCont.release();
 								if(!!error){
