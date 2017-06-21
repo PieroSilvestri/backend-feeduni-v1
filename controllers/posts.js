@@ -91,11 +91,13 @@ router.post('/add', function(req, res){
 		if(!!error){
 			//tempCont.release();
 			console.log('Error');
+			console.log(error);
 		}else{
 			console.log('Connected');
-			tempCont.query("INSERT INTO " + tableName + " (TEXT, USER, TAG_ID, IMAGE) VALUES ('" 
+			tempCont.query("INSERT INTO " + tableName + " (TEXT, USER, TAG_ID, IMAGE, PHONE, EMAIL) VALUES ('" 
 							+ req.body.text + "', '" + req.body.username + "', '" 
-							+ req.body.tag_id + "', '" + req.body.image + "');", 
+							+ req.body.tag_id + "', '" + req.body.image + "', '" 
+							+ req.body.phone + "', '" + req.body.email + "');", 
 							function(error, rows, fields){
 								tempCont.release();
 								if(!!error){
