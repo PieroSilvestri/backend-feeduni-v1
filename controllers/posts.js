@@ -80,7 +80,7 @@ router.get('/:userId', function(req, res){
 
 router.post('/add', function(req, res){
 
-	if(!req.body.text || !req.body.tag_id){
+	if(!req.body.title || !req.body.tag_id){
 		return res.json({
 			message: 'Missing text or tag',
 			error: true
@@ -94,14 +94,16 @@ router.post('/add', function(req, res){
 			console.log(error);
 		}else{
 			console.log('Connected');
-			tempCont.query("INSERT INTO " + tableName + " (TEXT, USER, TAG_ID, IMAGE, PHONE, EMAIL) VALUES ('" 
-							+ req.body.text + "', '" + req.body.username + "', '" 
+			tempCont.query("INSERT INTO " + tableName + " (TITLE, USER, TAG_ID, IMAGE, PHONE, EMAIL, PRICE, DESCRIPTION) VALUES ('" 
+							+ req.body.title + "', '" + req.body.username + "', '" 
 							+ req.body.tag_id + "', '" + req.body.image + "', '" 
-							+ req.body.phone + "', '" + req.body.email + "');", 
+							+ req.body.phone + "', '" + req.body.email + "', '" 
+							+ req.body.price + "', '" + req.body.description + "');", 
 							function(error, rows, fields){
 								tempCont.release();
 								if(!!error){
 									console.log('Error in the query');
+									console.log(error);
 								}else{
 									if(rows.length == 0){
 										return res.json({
